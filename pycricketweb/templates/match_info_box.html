@@ -1,0 +1,38 @@
+<div class="rca-row">
+  <div class="rca-column-6">
+    <div class="rca-mini-widget rca-history-info">
+      <div class="rca-row">
+        <span class="rca-col rca-history-title">Match:</span>
+        <span class="rca-col"> {{title}}</span>
+      </div>
+      <div class="rca-row">
+        <span class="rca-col rca-history-title">Series:</span>
+        <span class="rca-col"> {{season.name}}</span>
+      </div>
+      <div class="rca-row">
+        <span class="rca-col rca-history-title">Date (GMT):</span>
+        <span class="rca-col"> {{start_date.str}}</span>
+      </div>
+      <div class="rca-row">
+        <span class="rca-col rca-history-title">Venue:</span>
+        <span class="rca-col"> {{venue}}</span>
+      </div>
+      <div class="rca-row">
+        <span class="rca-col rca-history-title">Match Type:</span>
+        {%if format == 't20'%}
+        	<span class="rca-col"> Twenty20 Cricket Match</span>
+        {%elif format == 'one-day' %}
+        	<span class="rca-col"> International Test Cricket Match</span>
+        {%elif format == 'test' %}
+        	<span class="rca-col"> International One Day Cricket Match</span>
+        {%endif%}
+      </div>
+      {%if toss%}
+        <div class="rca-row">
+          <span class="rca-col rca-history-title">Toss:</span>
+          <span class="rca-col"> {{toss.str}}</span>
+        </div>
+    {%endif%}
+    </div>
+  </div>
+</div>
