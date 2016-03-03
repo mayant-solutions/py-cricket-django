@@ -5,76 +5,49 @@
 <!--Whole Container -->
 <div class="rca-container rca-margin">
   <!--Widget Outer-->
-  <div class="rca-row">
-    <!--Widget Inner -->
-    <div class="rca-menu-widget rca-left-border">
-      <ul class="rca-season-list">
-        <li>
-          <a href="#">
-            BAN vs ZIM
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            IND vs AUS
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            WI vs IND
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            RSA vs NZ
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            ENG vs BAN
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            AUS vs ZIM
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
+  {%include "recent_season.html"%}
 
   <!--Widget Outer-->
   <div class="rca-row">
     <!--Widget Inner -->
-    <div class="rca-column-3">
-      <!--Live Season-->
-      <div class="rca-menu-widget rca-live-season rca-left-border">
-        <a href="#" class="rca-padding">
-          <span class="rca-match-title rca-live-text">IND vs IRE : </span><span class="rca-match-score">Ind 89/8 - 14.8(0)</span>
-          <span class="rca-live-label rca-right">Live</span>
-        </a>
+    {% for match in started_matches %}
+      <div class="rca-column-3">
+        <div class="rca-menu-widget rca-live-season rca-left-border">
+          <a href="#" class="rca-padding">
+            <span class="rca-match-title rca-live-text">{{match.short_name}} : </span><span class="rca-match-score">{{match.now.runs_str}}</span>
+            <span class="rca-live-label rca-right">Live</span>
+          </a>
+        </div>
       </div>
-    </div>
-    
-    <!--Widget Inner -->
-    <div class="rca-column-3">
-      <!--Upcoming Match-->
-      <div class="rca-menu-widget rca-left-border">
-        <a href="#" class="rca-padding">
-          <span class="rca-match-title">IND vs IRE : </span><span class="rca-match-score">Sun, 31 Jan 2:10 pm IST</span>
-        </a>
+    {% empty %}
+      <div class="rca-column-3">
+        <div class="rca-menu-widget rca-live-season rca-left-border">
+          <a href="#" class="rca-padding">
+            No Live Match Now
+          </a>
+        </div>
       </div>
-    </div>
+    {%endfor%}
 
-    <!--Widget Inner -->
-    <div class="rca-column-3">
-      <!--Upcoming Match-->
-      <div class="rca-menu-widget rca-left-border">
-        <a href="#" class="rca-padding">
-          <span class="rca-match-title">IND vs IRE : </span><span class="rca-match-score">India Won by 37 runs.</span>
-        </a>
+    {% for match in not_started_matches %}
+      <div class="rca-column-3">
+        <div class="rca-menu-widget rca-left-border">
+          <a href="#" class="rca-padding">
+            <span class="rca-match-title">{{match.short_name}} : </span><span class="rca-match-score">{{match.start_date.str}}</span><span class="rca-live-label rca-right">No started</span>
+          </a>
+        </div>
       </div>
-    </div>
+    {%endfor%}
+
+    {% for match in completed_matches %}
+      <div class="rca-column-3">
+        <div class="rca-menu-widget rca-left-border">
+          <a href="#" class="rca-padding">
+            <span class="rca-match-title">{{match.short_name}} : </span><span class="rca-match-score">{{match.msgs.completed}}</span> <span class="rca-live-label rca-right">Completed</span>
+          </a>
+        </div>
+      </div>
+    {%endfor%}
   </div>
 
   <!--Widget Outer-->

@@ -1,0 +1,13 @@
+<div class="rca-row">
+  <div class="rca-menu-widget rca-left-border">
+    <ul class="rca-season-list">
+      {%for season in recent_seasons%}
+        <li>
+          <a href="#">
+            {{season.short_name}}
+          </a>
+        </li>
+      {%endfor%}
+    </ul>
+  </div>
+</div>

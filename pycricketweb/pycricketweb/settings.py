@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cricket',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -63,6 +64,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cricket.context_processors.get_recent_season',
             ],
         },
     },
@@ -125,8 +127,11 @@ STATICFILES_DIRS = [
 
 STATIC_URL = '/static/'
 
-USE_CA_FILECACHE = True
+USE_RCA_FILECACHE = True
+
 CA_ACCESS_KEY = "9dfd73bb4f27f5474296c5ca260b27af"
 CA_SECRET_KEY = "edcf474f3fa006c59ecfd1b3a19e3551"
 CA_APP_ID = "com.litzscore.www"
 CA_DEVICE_ID = ""
+
+RECENT_SEASON_CACHE = 7200;  #In seconds
