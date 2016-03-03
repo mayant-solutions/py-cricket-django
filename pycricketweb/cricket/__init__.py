@@ -1,12 +1,12 @@
 import pycricket
 from django.conf import settings
 
-if settings.USE_CA_FILECACHE:
-  ca_cache = pycricket.FileStorageHandler(settings.BASE_DIR+"/") 
+if settings.USE_RCA_FILECACHE:
+  ca_cache = pycricket.RcaFileStorageHandler(settings.BASE_DIR+"/") 
 else:
-  ca_cache = pycricket.CricketApiStorageHandler()
+  ca_cache = pycricket.RcaStorageHandler()
 
-CRICKET_API = pycricket.CricketApiApp(settings.CA_ACCESS_KEY, \
+CRICKET_API = pycricket.RcaApp(settings.CA_ACCESS_KEY, \
               settings.CA_SECRET_KEY, \
               settings.CA_APP_ID, \
               ca_cache,

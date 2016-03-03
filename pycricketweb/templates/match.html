@@ -215,41 +215,7 @@
   {%include "match_info_box.html"%}
 
   <!--Completed Match with man of the match and test innings score card -->
-  <div class="rca-row">
-    <!--Widget Inner -->
-    <div class="rca-column-6">
-      <!--Match Series-->
-      <div class="rca-medium-widget rca-padding rca-completed-match rca-top-border">
-        <div class="rca-right rca-basic-text">12th Feb 2016</div>
-        <div class="rca-clear"></div>
-        <div class="rca-padding">       
-          <h3 class="rca-match-title rca-theme-text">
-            India won by 69 runs
-          </h3>
-          <p class="rca-match-info">
-            <span>2nd T20 Match</span>
-          </p>
-          <div class="rca-top-padding">
-            <div class="rca-team-score">
-              <span class="team">India</span>
-              <span>196/6 in 20.0</span>
-            </div>
-            <div class="rca-team-score">
-              <span class="team">Sri Lanka</span>
-              <span>127/9 in 20.0</span>
-            </div>
-          </div>
-          <div class="rca-man-match">
-            <h3>Man of the Match <span>S Dawan</span></h3>
-            <div class="rca-padding">
-              <p class="rca-man-match-record"><span class="title">Runs</span><span>51(25)</span></p>
-              <p class="rca-man-match-record"><span class="title">Boundries</span><span>7X4, 2X6</span></p>
-              <p class="rca-man-match-record"><span class="title">Wickets</span><span>Nil</span></p>
-            </div>
-          </div>
-        </div>      
-      </div>
-    </div>
+  {%include "match_completed_box.html"%}
 
     <div class="rca-column-6">
       <!--Match Series-->
@@ -473,98 +439,9 @@
   </div>
 
   <!--Upcoming Match with squad and bench list-->
-  <div class="rca-row">
-    <!--Widget Inner -->
-    <div class="rca-column-6">
-      <!--Match Series-->
-      <div class="rca-medium-widget rca-padding rca-completed-match rca-top-border">
-        <div class="rca-right rca-basic-text">12th Feb 2016</div>
-        <div class="rca-clear"></div>
-        <div class="rca-padding">       
-          <h3 class="rca-match-title rca-theme-text">
-            BAN VS IND
-          </h3>
-          <p class="rca-match-info">
-            <span>2nd T20 Match</span>
-          </p>
-          <div class="rca-top-padding">
-            <div class="rca-teams">
-              <span class="team">India</span>
-              <span class="rca-vs"></span>
-              <span class="team">Bakistan</span>
-            </div>
-          </div>
-          <div class="rca-match-start">
-            <h3>Starts in</h3>
-            <div class="rca-padding">
-              <h2>1 day</h2>                  
-              <p class="rca-center">
-                Wed 24th Feb 2016, 7:00 pm (local time)
-              </p>
-            </div>
-          </div>
-        </div>      
-      </div>
-    </div>
+  {%include "match_before_start_box.html"%}
 
-    <div class="rca-column-6">
-      <!--Match Series-->
-      <div class="rca-medium-widget rca-top-border ">
-        <ul class="rca-tab-list">
-          <li class="rca-tab-link active" data-tab="tab-1" onclick="showTab(this);">SCORECARD</li>
-          <li class="rca-tab-link" data-tab="tab-2" onclick="showTab(this);">SQUAD</li>
-        </ul>
-        <div id="tab-1" class="rca-tab-content rca-padding active">
-          <div class="rca-padding">                
-            <div class="rca-switch filled">
-              <span class="active">Team X</span><span>Team Y</span>
-            </div>
-          </div>
-          <div class="rca-batting-score rca-padding">
-            <h3>Team X (11)</h3>
-            <div class="rca-player-detail">
-              <span class="rca-player">MS Dhoni</span>
-              <span class="rca-highlight-text">(C) & (WK)</span>
-              <span class="rca-right rca-basic-text">Batsman</span>
-            </div>
-            <div class="rca-player-detail">
-              <span class="rca-player">Shikhar Dhawan</span>
-              <span class="rca-right rca-basic-text">Batsman</span>
-            </div>
-            <div class="rca-player-detail">
-              <span class="rca-player">Ajinkya Rahane</span>
-              <span class="rca-right rca-basic-text">Bowler</span>
-            </div>
-            <div class="rca-player-detail">
-              <span class="rca-player">Suresh Raina</span>
-              <span class="rca-right rca-basic-text">All rounder</span>
-            </div>
-          </div>
-          <div class="rca-batting-score rca-padding">
-            <h3>Bench (9)</h3>
-            <div class="rca-player-detail">
-              <span class="rca-player">Rohit Sharma</span>
-              <span class="rca-highlight-text">(WK)</span>
-              <span class="rca-right rca-basic-text">Batsman</span>
-            </div>
-            <div class="rca-player-detail">
-              <span class="rca-player">Rohit Sharma</span>
-              <span class="rca-right rca-basic-text">Batsman</span>
-            </div>
-            <div class="rca-player-detail">
-              <span class="rca-player">Rohit Sharma</span>
-              <span class="rca-right rca-basic-text">Batsman</span>
-            </div>
-            <div class="rca-player-detail">
-              <span class="rca-player">Rohit Sharma</span>
-              <span class="rca-right rca-basic-text">Batsman</span>
-            </div>
-          </div>
-        </div>
-        <div id="tab-2" class="rca-padding rca-tab-content">
-          
-        </div>
-      </div>
+  {%include "match_squad.html"%}
     </div>
   </div>
 </div>

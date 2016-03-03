@@ -1,0 +1,34 @@
+<!--Upcoming Match with squad and bench list-->
+  <div class="rca-row">
+    <!--Widget Inner -->
+    <div class="rca-column-6">
+      <!--Match Series-->
+      <div class="rca-medium-widget rca-padding rca-completed-match rca-top-border">
+        <div class="rca-right rca-basic-text">{{ start_date.datetime_obj|date:"jS M Y"}}</div>
+        <div class="rca-clear"></div>
+        <div class="rca-padding">       
+          <h3 class="rca-match-title rca-theme-text">
+            {{teams.a.short_name}} VS {{teams.b.short_name}}
+          </h3>
+          <p class="rca-match-info">
+            <span>{{related_name}}</span>
+          </p>
+          <div class="rca-top-padding">
+            <div class="rca-teams">
+              <span class="team">{{teams.a.name}}</span>
+              <span class="rca-vs"></span>
+              <span class="team">{{teams.b.name}}</span>
+            </div>
+          </div>
+          <div class="rca-match-start">
+            <h3>Starts in</h3>
+            <div class="rca-padding">
+              <h2>{{start_date.datetime_obj|timeuntil:now}}</h2>                  
+              <p class="rca-center">
+                {{ start_date.datetime_obj|date:"D jS M Y"}}, {{ start_date.datetime_obj|time:"g:i A"|lower}} (local time)
+              </p>
+            </div>
+          </div>
+        </div>      
+      </div>
+    </div>

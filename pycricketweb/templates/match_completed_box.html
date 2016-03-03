@@ -1,0 +1,90 @@
+<div class="rca-row">
+    <!--Widget Inner -->
+    <div class="rca-column-6">
+      <!--Match Series-->
+      <div class="rca-medium-widget rca-padding rca-completed-match rca-top-border">
+        <div class="rca-right rca-basic-text">{{start_date.datetime_obj|date:"jS M Y"}}</div>
+        <div class="rca-clear"></div>
+        <div class="rca-padding">       
+          <h3 class="rca-match-title rca-theme-text">
+            {{msgs.completed}}
+          </h3>
+          <p class="rca-match-info">
+            <span>{{related_name}}</span>
+          </p>
+          <div class="rca-top-padding">
+            <div class="rca-team-score">
+              <span class="team">{{teams.a.name}}</span>
+              <span>{{innings.a_1.run_str}}</span>
+            </div>
+            <div class="rca-team-score">
+              <span class="team">{{teams.b.name}}</span>
+              <span>{{innings.b_1.run_str}}</span>
+            </div>
+          </div>
+          <div class="rca-man-match">
+            <h3>Man of the Match <span>{{man_of_match_obj.fullname}}</span></h3>
+            <div class="rca-padding">
+              <!-- Runs -->
+              
+              <p class="rca-man-match-record"><span class="title">Runs</span>
+              
+              <!-- only for single innings -->
+              {%if "1" in man_of_match_obj.match.innings %}
+                <span>{{man_of_match_obj.match.innings.1.batting.runs}}({{man_of_match_obj.match.innings.1.batting.balls}})</span>
+              {%endif%}
+             <!--  Test match -->
+              {%if "1" in man_of_match_obj.match.innings and "2" in man_of_match_obj.match.innings%}
+                <span>{{man_of_match_obj.match.innings.1.batting.runs}}({{man_of_match_obj.match.innings.1.batting.balls}}) & {{man_of_match_obj.match.innings.2.batting.runs}}({{man_of_match_obj.match.innings.2.batting.balls}})</span>
+              {%endif%}
+              <!-- Superover -->
+              {%if "1" in man_of_match_obj.match.innings and "superover" in man_of_match_obj.match.innings%}
+                <span>{{man_of_match_obj.match.innings.1.batting.runs}}({{man_of_match_obj.match.innings.1.batting.balls}}) & {{man_of_match_obj.match.innings.superover.batting.runs}}({{man_of_match_obj.match.innings.superover.batting.balls}})</span>
+              {%endif%}
+              
+              </p>
+              
+              <!-- Boundaries -->
+              
+              <p class="rca-man-match-record"><span class="title">Boundries</span>
+
+              <!-- only for single innings -->
+              {%if "1" in man_of_match_obj.match.innings %}
+                <span>{{man_of_match_obj.match.innings.1.batting.fours}}X4, {{man_of_match_obj.match.innings.1.batting.sixes}}X6</span>
+              {%endif%}
+             <!--  Test match -->
+              {%if "1" in man_of_match_obj.match.innings and "2" in man_of_match_obj.match.innings%}
+                <span>{{man_of_match_obj.match.innings.1.batting.fours}}X4,{{man_of_match_obj.match.innings.1.batting.sixes}}X6 <br /> {{man_of_match_obj.match.innings.2.batting.fours}}X4,{{man_of_match_obj.match.innings.2.batting.sixes}}X6</span>
+              {%endif%}
+              <!-- Superover -->
+              {%if "1" in man_of_match_obj.match.innings and "superover" in man_of_match_obj.match.innings%}
+                <span>{{man_of_match_obj.match.innings.1.batting.fours}}X4,{{man_of_match_obj.match.innings.1.batting.sixes}}X6 <br /> {{man_of_match_obj.match.innings.superover.batting.fours}}X4{{man_of_match_obj.match.innings.superover.batting.sixes}}X6</span>
+              {%endif%}
+
+              <!-- Wickets -->
+
+              <p class="rca-man-match-record"><span class="title">Wickets</span>
+
+              <!-- only for single innings -->
+              {%if man_of_match_obj.match.innings.1.bowling %}
+                {%if "1" in man_of_match_obj.match.innings %}
+                <span>{{man_of_match_obj.match.innings.1.bowling.runs}}/{{man_of_match_obj.match.innings.1.bowling.wickets}} ({{man_of_match_obj.match.innings.1.bowling.overs}})</span>
+              {%endif%}
+             <!--  Test match -->
+              {%if "1" in man_of_match_obj.match.innings and "2" in man_of_match_obj.match.innings%}
+                <span>{{man_of_match_obj.match.innings.1.bowling.runs}}/{{man_of_match_obj.match.innings.1.bowling.wickets}} ({{man_of_match_obj.match.innings.1.bowling.overs}}) <br /> {{man_of_match_obj.match.innings.2.bowling.runs}}/{{man_of_match_obj.match.innings.2.bowling.wickets}} ({{man_of_match_obj.match.innings.2.bowling.overs}})</span>
+              {%endif%}
+              <!-- Superover -->
+              {%if "1" in man_of_match_obj.match.innings and "superover" in man_of_match_obj.match.innings%}
+                <span>{{man_of_match_obj.match.innings.1.bowling.runs}}/{{man_of_match_obj.match.innings.1.bowling.wickets}} ({{man_of_match_obj.match.innings.1.bowling.overs}}) <br /> {{man_of_match_obj.match.innings.superover.bowling.runs}}/{{man_of_match_obj.match.innings.superover.bowling.wickets}} ({{man_of_match_obj.match.innings.superover.bowling.overs}})</span>
+              {%endif%} 
+              {%else%}
+                <span>nil</span>
+              {%endif%}
+              
+
+            </div>
+          </div>
+        </div>      
+      </div>
+    </div>
