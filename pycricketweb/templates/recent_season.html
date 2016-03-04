@@ -1,9 +1,14 @@
 <div class="rca-row">
   <div class="rca-menu-widget rca-left-border">
     <ul class="rca-season-list">
+      <li>
+        <a href="/">
+          Home
+        </a>
+      </li>
       {%for season in recent_seasons%}
         <li>
-          <a href="#">
+          <a href="/season/{{season.key}}/">
             {{season.short_name}}
           </a>
         </li>

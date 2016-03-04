@@ -7,63 +7,13 @@
   <!--Live ScoreBoard -->
   <div class="rca-row">
     <!--Widget Inner -->
-    <div class="rca-column-6">
-      <!--Match Series-->
-      <div class="rca-medium-widget rca-padding rca-live-season rca-top-border">
-        <div class="rca-live-label rca-right">IND vs NZL</div>
-        <div class="rca-clear"></div>
-        <div class="rca-padding">       
-          <h3 class="rca-match-title">
-            IND: 173/2 in 18.5
-          </h3>
-          <p class="rca-match-info">
-            <span>IND: 16/1 in 1.0</span>
-            <span>CRR:4.1</span>
-            <span>Req RR:10.1</span>
-          </p>
-          <p class="rca-match-info">
-            <span>IND: 220/7 in 1.0</span>
-            <span>& 101/4 in 20.0</span>
-          </p>
-          <div class="rca-top-padding">
-            <div class="rca-batsman striker">
-              <span class="player">V Kohli</span>
-              <span>48(27)</span>
-            </div>
-            <div class="rca-batsman">
-              <span class="player">MS Dhoni</span>
-              <span>14(8)</span>
-            </div>
-          </div>
-          <div class="rca-ball-detail">
-            <div class="rca-match-schedule">
-              Over: 24
-            </div>
-            <ul class="rca-ball-by">
-              <li class="rca-six">6</li>
-              <li class="">1wd</li>
-              <li class="rca-wicket">w</li>
-              <li class="">1</li>
-              <li class="">2</li>
-              <li class="rca-six">4</li>
-            </ul>
-            <div class="rca-bowler-info">
-              <span>Agarkar: </span><span class="rca-bolwing">5/0 in 0.2</span>
-            </div>
-          </div>
-        </div>
-        <div class="rca-top-padding rca-score-status">
-          <div class="rca-status-scroll">
-            FOUR!!! from Dhoni
-          </div>
-          <ul class="rca-bullet-list">
-            <li class="active" data-tab="#status1"></li>
-            <li data-tab="#status2"></li>
-            <li data-tab="#status3"></li>
-          </ul>
-        </div>           
-      </div>
-    </div>
+    {%if smart_card.status == 'completed' %}
+      {%include "match_completed_box.html"%}
+    {%elif smart_card.status == 'started' %}
+      {% include "match_start_box.html" %}
+    {%else%}
+      {%include "match_before_start_box.html"%}
+    {%endif%}
 
     <div class="rca-column-6">
       <!--Match Series-->
@@ -213,9 +163,6 @@
   </div>
 
   {%include "match_info_box.html"%}
-
-  <!--Completed Match with man of the match and test innings score card -->
-  {%include "match_completed_box.html"%}
 
     <div class="rca-column-6">
       <!--Match Series-->
@@ -438,12 +385,11 @@
     </div>
   </div>
 
-  <!--Upcoming Match with squad and bench list-->
-  {%include "match_before_start_box.html"%}
 
   {%include "match_squad.html"%}
     </div>
   </div>
 </div>
+
 
 {%endblock%}

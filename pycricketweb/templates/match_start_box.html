@@ -1,0 +1,60 @@
+<div class="rca-column-6">
+  <!--Match Series-->
+  <a href="/match/{{smart_card.key}}/">
+    <div class="rca-medium-widget rca-padding rca-live-season rca-top-border">
+      <div class="rca-live-label rca-right">{{smart_card.short_name}}</div>
+      <div class="rca-clear"></div>
+      <div class="rca-padding">       
+        <h3 class="rca-match-title">
+          {{smart_card.bat_team_name}}: {{smart_card.runs_str}}
+        </h3>
+        <p class="rca-match-info">
+          <span>CRR:{{smart_card.run_rate}}</span>
+          <!-- {%if smart_card.req_obj%}
+            <span>Req RR:{{smart_card.req_obj.runs_rate}}</span>
+          {%endif%} -->
+        </p>
+        <p class="rca-match-info">
+          {%if smart_card.req_obj%}
+            <span>{{smart_card.req_obj.runs_str}}</span>
+          {%endif%}
+        </p>
+
+        <div class="rca-top-padding">
+          <div class="rca-batsman striker">
+
+            <span class="player">{%if smart_card.striker_name %} {{smart_card.striker_name}} {%endif%}</span>
+            <span>{{smart_card.striker_runs}}</span>
+          </div>
+          <div class="rca-batsman">
+            <span class="player">{%if smart_card.nonstriker_name %} {{smart_card.nonstriker_name}} {%endif%}</span>
+            <span>{{smart_card.nonstriker_runs}}</span>
+          </div>
+        </div>
+        <div class="rca-ball-detail">
+          <div class="rca-match-schedule">
+            Over: {{smart_card.over}}
+          </div>
+          <ul class="rca-ball-by">
+            {%for ball in smart_card.recent_overs_str%}
+              <li class="{{ball.class}}">{{ball.recent_overs_str}}</li>
+            {%endfor%}
+          </ul>
+          <div class="rca-bowler-info">
+            <span>{%if smart_card.bowler_name%}{{smart_card.bowler_name}}: {%endif%} </span><span class="rca-bolwing">{{smart_card.bowler_runs}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="rca-top-padding rca-score-status">
+        <div class="rca-status-scroll">
+          {{smart_card.comment | safe}}
+        </div>
+        <ul class="rca-bullet-list">
+          <li class="active" data-tab="#status1"></li>
+          <li data-tab="#status2"></li>
+          <li data-tab="#status3"></li>
+        </ul>
+      </div>           
+    </div>
+  </a>
+</div>

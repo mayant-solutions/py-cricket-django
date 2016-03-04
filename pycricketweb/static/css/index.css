@@ -293,9 +293,9 @@ button {
     font-size: 12px;
     background-color: #b3b3b3;
     color: #fff; }
-    .rca-ball-by li.rca-wicket {
+    .rca-ball-by li.w {
       background-color: #d91e18; }
-    .rca-ball-by li.rca-six {
+    .rca-ball-by li.b4, .rca-ball-by li.b6 {
       background-color: #1eb848; }
 
 .rca-bowler-info {

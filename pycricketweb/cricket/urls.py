@@ -5,5 +5,6 @@ from cricket import views
 urlpatterns = [
 	
     url(r'^$', views.homeHandler, name='home'),
-    url(r'^match/(?P<match_key>.+)/$', views.matchHandler, name='match')
+    url(r'^match/(?P<match_key>.+)/$', views.matchHandler, name='match'),
+    url(r'^season/(?P<season_key>.+)/$', views.seasonHandler, name='season')
 ]

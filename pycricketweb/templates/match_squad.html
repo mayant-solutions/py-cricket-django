@@ -1,53 +1,164 @@
 <div class="rca-column-6">
-      <!--Match Series-->
-      <div class="rca-medium-widget rca-top-border ">
-        <ul class="rca-tab-list">
-          <li class="rca-tab-link active" data-tab="tab-1" onclick="showTab(this);">SCORECARD</li>
-          <li class="rca-tab-link" data-tab="tab-2" onclick="showTab(this);">SQUAD</li>
-        </ul>
-        <div id="tab-1" class="rca-tab-content rca-padding active">
-          <div class="rca-padding">                
-            <div class="rca-switch filled">
-              <span class="active">{{teams.a.name}}</span><span>{{teams.b.name}}</span>
-            </div>
-          </div>
-          <div class="rca-batting-score rca-padding">
-          {%for player in playing_11_a_obj %}
-            <div class="rca-player-detail">
-              <span class="rca-player">{{player.name}}</span>
-              {% if player.is_captain %}
-                <span class="rca-highlight-text">(C) & (WK)</span>
-              {%endif%}
-              <span class="rca-right rca-basic-text">Batsman</span>
-            </div>
-          {% endfor %} 
-            <div class="rca-player-detail">
-              <span class="rca-player">Suresh Raina</span>
-              <span class="rca-right rca-basic-text">All rounder</span>
-            </div>
-          </div>
-          <div class="rca-batting-score rca-padding">
-            <h3>Bench (9)</h3>
-            <div class="rca-player-detail">
-              <span class="rca-player">Rohit Sharma</span>
-              <span class="rca-highlight-text">(WK)</span>
-              <span class="rca-right rca-basic-text">Batsman</span>
-            </div>
-            <div class="rca-player-detail">
-              <span class="rca-player">Rohit Sharma</span>
-              <span class="rca-right rca-basic-text">Batsman</span>
-            </div>
-            <div class="rca-player-detail">
-              <span class="rca-player">Rohit Sharma</span>
-              <span class="rca-right rca-basic-text">Batsman</span>
-            </div>
-            <div class="rca-player-detail">
-              <span class="rca-player">Rohit Sharma</span>
-              <span class="rca-right rca-basic-text">Batsman</span>
-            </div>
-          </div>
-        </div>
-        <div id="tab-2" class="rca-padding rca-tab-content">
-          
+  <div class="rca-medium-widget rca-top-border ">
+    <ul class="rca-tab-list">
+      <li class="rca-tab-link active" data-tab="tab-1" onclick="showTab(this);">SCORECARD</li>
+      <li class="rca-tab-link" data-tab="tab-2" onclick="showTab(this);">SQUAD</li>
+    </ul>
+    <div id="tab-1" class="rca-tab-content rca-padding active">
+      <div class="rca-padding">                
+        <div class="rca-switch filled">
+          <span class="active">{{team_a_name}}</span><span>{{team_b_name}}</span>
         </div>
       </div>
+      <div class="rca-batting-score rca-padding">
+
+        {%if have_playing_a_11 %}
+         {%for player in playing_11_a_obj %}
+            <div class="rca-player-detail">
+              <span class="rca-player">{{player.name}}</span>
+              {% if player.is_captain and  player.is_keeper %}
+                <span class="rca-highlight-text">(C) & (WK)</span>
+              {%elif player.is_captain %}
+                <span class="rca-highlight-text">(C)</span>
+              {%elif player.is_keeper%}
+                <span class="rca-highlight-text">(WK)</span>
+              {%endif%}
+
+              {% if player.identified_roles.batsman and player.identified_roles.bowler %}
+                <span class="rca-right rca-basic-text">Allrounder</span>
+              {% elif player.identified_roles.batsman and player.identified_roles.keeper %}
+                <span class="rca-right rca-basic-text">Wicketkeeper</span>
+              {% elif player.identified_roles.batsman %}
+                <span class="rca-right rca-basic-text">Batsman</span>
+              {% elif player.identified_roles.bowler %}
+                <span class="rca-right rca-basic-text">Bowler</span>
+              {% endif %}
+            </div>
+          {% endfor %} 
+        {%elif have_squad_a %}
+          {%for player in playing_a_obj %}
+            <div class="rca-player-detail">
+              <span class="rca-player">{{player.name}}</span>
+              {% if player.is_captain and player.is_keeper %}
+                <span class="rca-highlight-text">(C) & (WK)</span>
+              {%elif player.is_captain %}
+                <span class="rca-highlight-text">(C)</span>
+              {%elif player.is_keeper%}
+                <span class="rca-highlight-text">(WK)</span>
+              {%endif%}
+              
+              {% if player.identified_roles.batsman and player.identified_roles.bowler %}
+                <span class="rca-right rca-basic-text">Allrounder</span>
+              {% elif player.identified_roles.batsman and player.identified_roles.keeper %}
+                <span class="rca-right rca-basic-text">Wicketkeeper</span>
+              {% elif player.identified_roles.batsman %}
+                <span class="rca-right rca-basic-text">Batsman</span>
+              {% elif player.identified_roles.bowler %}
+                <span class="rca-right rca-basic-text">Bowler</span>
+              {% endif %}
+
+            </div>
+          {% endfor %} 
+        {%else%}
+          Squad not available now
+        {%endif%}
+      </div>
+
+      {% if have_benach_a %}
+        <div class="rca-batting-score rca-padding">
+          <h3>Bench ({{bench_a_obj | length}})</h3>
+            {%for player in bench_a_obj %}
+              <div class="rca-player-detail">
+                <span class="rca-player">{{player.name}}</span>
+                {% if player.identified_roles.batsman and player.identified_roles.bowler %}
+                  <span class="rca-right rca-basic-text">Allrounder</span>
+                {% elif player.identified_roles.batsman and player.identified_roles.keeper %}
+                  <span class="rca-right rca-basic-text">Wicketkeeper</span>
+                {% elif player.identified_roles.batsman %}
+                  <span class="rca-right rca-basic-text">Batsman</span>
+                {% elif player.identified_roles.bowler %}
+                  <span class="rca-right rca-basic-text">Bowler</span>
+                {% endif %}
+              </div>
+            {%endfor%}
+        </div>
+      {%endif%}
+    </div>
+    <div id="tab-2" class="rca-padding rca-tab-content">
+      sdffffffffffffffffffffffffffffff
+      {%if have_playing_b_11 %}
+      sdfsdfsdf sdfsdfsddf  
+         {%for player in playing_11_b_obj %}
+            <div class="rca-player-detail">
+              <span class="rca-player">{{player.name}}</span>
+              {% if player.is_captain and  player.is_keeper %}
+                <span class="rca-highlight-text">(C) & (WK)</span>
+              {%elif player.is_captain %}
+                <span class="rca-highlight-text">(C)</span>
+              {%elif player.is_keeper%}
+                <span class="rca-highlight-text">(WK)</span>
+              {%endif%}
+
+              {% if player.identified_roles.batsman and player.identified_roles.bowler %}
+                <span class="rca-right rca-basic-text">Allrounder</span>
+              {% elif player.identified_roles.batsman and player.identified_roles.keeper %}
+                <span class="rca-right rca-basic-text">Wicketkeeper</span>
+              {% elif player.identified_roles.batsman %}
+                <span class="rca-right rca-basic-text">Batsman</span>
+              {% elif player.identified_roles.bowler %}
+                <span class="rca-right rca-basic-text">Bowler</span>
+              {% endif %}
+            </div>
+          {% endfor %} 
+        {%elif have_squad_a %}
+          {%for player in playing_b_obj %}
+            <div class="rca-player-detail">
+              <span class="rca-player">{{player.name}}</span>
+              {% if player.is_captain and player.is_keeper %}
+                <span class="rca-highlight-text">(C) & (WK)</span>
+              {%elif player.is_captain %}
+                <span class="rca-highlight-text">(C)</span>
+              {%elif player.is_keeper%}
+                <span class="rca-highlight-text">(WK)</span>
+              {%endif%}
+              
+              {% if player.identified_roles.batsman and player.identified_roles.bowler %}
+                <span class="rca-right rca-basic-text">Allrounder</span>
+              {% elif player.identified_roles.batsman and player.identified_roles.keeper %}
+                <span class="rca-right rca-basic-text">Wicketkeeper</span>
+              {% elif player.identified_roles.batsman %}
+                <span class="rca-right rca-basic-text">Batsman</span>
+              {% elif player.identified_roles.bowler %}
+                <span class="rca-right rca-basic-text">Bowler</span>
+              {% endif %}
+
+            </div>
+          {% endfor %} 
+        {%else%}
+          Squad not available now
+        {%endif%}
+      
+
+        {% if have_benach_a %}
+          <div class="rca-batting-score rca-padding">
+            <h3>Bench ({{bench_b_obj | length}})</h3>
+              {%for player in bench_b_obj %}
+                <div class="rca-player-detail">
+                  <span class="rca-player">{{player.name}}</span>
+                  {% if player.identified_roles.batsman and player.identified_roles.bowler %}
+                    <span class="rca-right rca-basic-text">Allrounder</span>
+                  {% elif player.identified_roles.batsman and player.identified_roles.keeper %}
+                    <span class="rca-right rca-basic-text">Wicketkeeper</span>
+                  {% elif player.identified_roles.batsman %}
+                    <span class="rca-right rca-basic-text">Batsman</span>
+                  {% elif player.identified_roles.bowler %}
+                    <span class="rca-right rca-basic-text">Bowler</span>
+                  {% endif %}
+                </div>
+              {%endfor%}
+          </div>
+        {%endif%}
+      </div>
+    </div>
+  </div>
+</div>
