@@ -1,0 +1,114 @@
+{% extends "base_public.html" %}
+{%block title%}Match {%endblock%}
+{%block body%}
+{%include "recent_season.html"%}
+<div class="rca-row rca-schedule-widget">
+  <!--Widget Inner -->
+  <h2>INTERNATIONAL CRICKET SCHEDULES</h2>
+  <div class="rca-schedule-top">
+    <span class="rca-right">
+      <a class="active" href="#">
+        <span>MONTH</span>
+      </a>
+      <a class="" href="#">
+        <span>LIST</span>
+      </a>
+    </span>
+  </div>
+  <!--Match Monthly Schedule-->
+  <div class="rca-mini-widget rca-top-border">
+    <ul class="rca-tab-list">
+      <li class="rca-tab-link" data-tab="tab-1" onclick="showTab(this);">Jan"16</li>
+      <li class="rca-tab-link" data-tab="tab-2" onclick="showTab(this);">Feb"16</li>
+      <li class="rca-tab-link active" data-tab="tab-3" onclick="showTab(this);">Mar"16</li>
+    </ul>
+    <div id="tab-1" class="rca-padding rca-tab-content active">
+      <div class="rca-schedule-date">
+        <h4>3rd Feb - Wednesday</h4>
+        <div class="rca-schedule-detail rca-test">
+          <h2>
+            <a href="#">
+              <span class="rca-team">NZ vs AUS</span><span class="rca-match-time">06.30 AM</span>
+            </a>
+          </h2>
+          <p>1st ODI Match -  Eden Park, Auckland, New Zealand</p>
+        </div>
+        <div class="rca-schedule-detail rca-odi">
+          <h2>
+            <a href="#">
+              <span class="rca-team">NZ vs AUS</span><span class="rca-match-time">06.30 AM</span>
+            </a>
+          </h2>
+          <p>1st ODI Match -  Eden Park, Auckland, New Zealand</p>
+        </div>
+        <div class="rca-schedule-detail rca-t20">
+          <h2>
+            <a href="#">
+              <span class="rca-team">NZ vs AUS</span><span class="rca-match-time">06.30 AM</span>
+            </a>
+          </h2>
+          <p>1st ODI Match -  Eden Park, Auckland, New Zealand</p>
+        </div>
+      </div>
+      <div class="rca-schedule-date">
+        <h4>3rd Feb - Wednesday</h4>
+        <div class="rca-schedule-detail rca-test">
+          <h2>
+            <a href="#">
+              <span class="rca-team">NZ vs AUS</span><span class="rca-match-time">06.30 AM</span>
+            </a>
+          </h2>
+          <p>1st ODI Match -  Eden Park, Auckland, New Zealand</p>
+        </div>
+        <div class="rca-schedule-detail rca-odi">
+          <h2>
+            <a href="#">
+              <span class="rca-team">NZ vs AUS</span><span class="rca-match-time">06.30 AM</span>
+            </a>
+          </h2>
+          <p>1st ODI Match -  Eden Park, Auckland, New Zealand</p>
+        </div>
+        <div class="rca-schedule-detail rca-t20">
+          <h2>
+            <a href="#">
+              <span class="rca-team">NZ vs AUS</span><span class="rca-match-time">06.30 AM</span>
+            </a>
+          </h2>
+          <p>1st ODI Match -  Eden Park, Auckland, New Zealand</p>
+        </div>
+      </div>  
+    </div>
+    <div id="tab-2" class="rca-padding rca-tab-content">
+      
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  {% autoescape off %}
+    var schedule_list = {{schedule_list}};
+    $(document).ready(function() {
+   
+      var schedule_list_html = "";
+      var current_date = "";
+      for (var i = 0; i < schedule_list.length; i++) {
+        schedule_list_html += '<div class="rca-schedule-date">';
+        var day = moment(schedule_list[i].start).format('D')
+        if(day != current_date){
+          schedule_list_html += '<h4>' + moment(schedule_list[i].start).format('Do MMM dddd') +'</h4>';
+        }
+        current_date = moment(schedule_list[i].start).format('D')
+        schedule_list_html += '<div class=\"rca-schedule-detail '+ schedule_list[i].bg_color +'\"><h2><a href=\"' + schedule_list[i].url + '\"><span class="rca-team">'+ schedule_list[i].short_name + '</span><span class="rca-match-time">'+ moment(schedule_list[i].start).format('hh:mm A') +'</span></a></h2><p>'+ schedule_list[i].related_name + ' - ' +schedule_list[i].venue + '</p></div></div>';
+      };
+
+      $("#tab-1").html(schedule_list_html);
+
+     })
+
+
+  {% endautoescape %}
+
+</script>
+
+{%endblock%}
