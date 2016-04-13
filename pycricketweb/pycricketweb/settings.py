@@ -129,9 +129,9 @@ STATIC_URL = '/static/'
 
 USE_RCA_FILECACHE = True
 
-CA_ACCESS_KEY = "9dfd73bb4f27f5474296c5ca260b27af"
-CA_SECRET_KEY = "edcf474f3fa006c59ecfd1b3a19e3551"
-CA_APP_ID = "com.litzscore.www"
+CA_ACCESS_KEY = ""
+CA_SECRET_KEY = ""
+CA_APP_ID = ""
 CA_DEVICE_ID = ""
 
 RECENT_SEASON_CACHE = 7200;  #In seconds

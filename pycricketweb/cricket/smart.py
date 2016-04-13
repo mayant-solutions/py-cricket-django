@@ -32,6 +32,7 @@ def create_match_started_card(card):
   nonstriker = now['nonstriker']
   striker = now['striker']
   bowler = now['bowler']
+  recent_overs_balls = []
 
   if nonstriker:
     data['nonstriker_name'] = card['players'][nonstriker]['name']
@@ -65,7 +66,8 @@ def create_match_started_card(card):
   data['over'] = str(now['balls'] / 6) + "." + str(now['balls'] % 6)
 
   data['recent_overs_str'] = []
-  recent_overs_balls = now['recent_overs'][0][1]
+  if now['recent_overs']:
+    recent_overs_balls = now['recent_overs'][0][1]
 
   extra_types =  {'noball' : 'nb', 'wide':'wd', 'legbye':'lb', 'bye':'by'}
    
@@ -94,8 +96,9 @@ def create_match_started_card(card):
     ball['recent_overs_str'] = recent_overs_str
     data['recent_overs_str'].append(ball) 
 
-  if now['last_ball']['comment']:
-    data['comment'] = now['last_ball']['comment']
+
+  if now['last_ball'] and now['last_ball']['comment']:
+      data['comment'] = now['last_ball']['comment']
   elif card['toss'] and 'str' in card['toss']:
     data['comment'] = card['toss']['str']
 
